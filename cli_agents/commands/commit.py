@@ -18,7 +18,7 @@ def get_git_root():
 def get_git_diff():
     git_root = get_git_root()
     try:
-        return subprocess.check_output(
+        diff = subprocess.check_output(
             [
                 "git",
                 "--no-pager",
@@ -34,6 +34,9 @@ def get_git_diff():
             ],
             cwd=git_root,
         ).decode("utf-8")
+        if not any(diff):
+            raise click.ClickException("No staged changes.")
+        return diff
     except subprocess.CalledProcessError:
         raise click.ClickException("Not a git repository or no changes")
 
