@@ -2,7 +2,7 @@ import os
 import click
 from openai import OpenAI
 from dotenv import load_dotenv
-from .commands import chat
+from .commands import chat, branch
 
 
 @click.group()
@@ -21,6 +21,7 @@ def cli(ctx):
 
 
 cli.add_command(chat.chat)
+cli.add_command(branch.branch)
 
 if __name__ == "__main__":
     cli()
