@@ -2,7 +2,7 @@ import os
 import click
 from openai import OpenAI
 from dotenv import load_dotenv
-from .commands import chat, branch, commit, url
+from .commands import chat, branch, commit, perp
 
 @click.group()
 @click.pass_context
@@ -25,7 +25,7 @@ def cli(ctx):
     )
 
 
-cli.add_command(url.url)
+cli.add_command(perp.perp)
 cli.add_command(chat.chat)
 cli.add_command(branch.branch)
 cli.add_command(commit.commit)
