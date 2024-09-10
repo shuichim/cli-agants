@@ -15,6 +15,17 @@ def get_git_root():
         raise click.ClickException("Not in a git repository.")
 
 
+def get_git_branch():
+    git_root = get_git_root()
+    try:
+        branch_name = subprocess.check_output(
+            ["git", "branch", "--show-current"], cwd=git_root
+        )
+        return branch_name
+    except subprocess.CalledProcessError:
+        raise click.ClickException("Not a git repository or no changes")
+
+
 def get_git_diff():
     git_root = get_git_root()
     try:
@@ -49,10 +60,14 @@ def get_git_diff():
 def commit(ctx, model):
     """Send a message to the chat model and get a response."""
     client = ctx.obj["client"]
+    git_branch = get_git_branch()
     diff_output = get_git_diff()
     message = f"""
 You will be provided with the output from the `git diff --staged` command.
 Your task is to craft a concise and descriptive commit message that accurately reflects the code and documentation changes.
+
+Also consider the branch name: {git_branch}
+The branch name may or may not make sense, but it should help determine the direction and emphasis of your commit message.
 
 Please adhere to the Conventional Commits specification, formatting the message as follows:
 <type>(<scope>): <description>
