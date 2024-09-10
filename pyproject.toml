@@ -1,0 +1,20 @@
+[build-system]
+requires = ["setuptools >= 64.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "cli-agents"
+version = "0.1.2"
+description = "A command-line interface for agent-based systems."
+readme = "README.md"
+requires-python = ">=3.6"
+license = { text = "MIT" }
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+dependencies = ["Click", "openai", "python-dotenv"]
+
+[project.scripts]
+cli-agents = "cli_agents.cli:cli"
