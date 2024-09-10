@@ -7,7 +7,7 @@ name = "cli-agents"
 version = "0.1.2"
 description = "A command-line interface for agent-based systems."
 readme = "README.md"
-requires-python = ">=3.6"
+requires-python = ">=3.10"
 license = { text = "MIT" }
 classifiers = [
     "Programming Language :: Python :: 3",
