@@ -87,9 +87,9 @@ Please adhere to the Conventional Commits specification, formatting the message 
 * chore: Other changes that don't modify src or test files
 
 - `scope` (optional): A specific area or module of the codebase that the changes affect, enclosed in parentheses (e.g., `feat(parser):`)
-- `description`: A concise summary of the changes in a single, lowercase sentence without ending punctuation
+- `description`: A concise summary of the changes in a single, lowercase sentence without ending punctuation. Try to limit to 50 characters or less
 - `blank line`: Add a blank line between the commit message and the body
-- `body` (optional): A couple of paragraphs that provide additional contextual information about the changes.
+- `body` (optional): A couple of concise paragraphs that provide additional contextual information about the changes. Do not just repeat what one can see from the diff 
 
 Please provide only the commit message in your response, as it will be used directly in a git commit command.
     
