@@ -9,7 +9,7 @@ from .commands import chat, branch, commit, perp
 def cli(ctx):
     ctx.ensure_object(dict)
     load_dotenv()  # Load environment variables from .env file
-    api_key = os.getenv("OPENAI_API_KEY")
+    api_key = os.getenv("OPENROUTER_API_KEY")
     if not api_key:
         raise click.ClickException("OPENAI_API_KEY not found in environment variables")
     ctx.obj["client"] = OpenAI(
